@@ -1,0 +1,8 @@
+<div class="main">
+  <div class="todo-wrapper">
+    <div *ngFor="let todo of todoService.getTodos()">
+      <app-todo-item [todo]="todo"></app-todo-item>
+    </div>
+    <app-todo-input></app-todo-input>
+  </div>
+</div>

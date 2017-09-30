@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-header',
@@ -7,6 +8,10 @@ import {Component} from '@angular/core';
 })
 export class TodoHeaderComponent {
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
+
+  private removeAll() : void{
+     this.todoService.removeAll();
+  }
 
 }

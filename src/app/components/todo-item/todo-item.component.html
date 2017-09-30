@@ -1,3 +1,10 @@
 <div class="todoWrapper">
-  <button class="removeTodo" (click)="removeTodo()">remove</button>{{todo.text}}
+  <input  type="checkbox" (change)="addRemoveTodoToDelete()">
+  <button [hidden]="editMode" class="removeTodo" (click)="removeTodo()">remove</button>
+  <button [hidden]="editMode" class="removeTodo" (click)="editTodo()">edit</button>
+  <button [hidden]="!editMode" class="removeTodo" (click)="cancelEdit()">cancel</button>
+  <button [hidden]="!editMode" class="removeTodo" (click)="saveEdit( todo.text, todo.id)">save</button>
+  <span [hidden]="editMode" >{{todo.text}}</span>
+  <input [hidden]="!editMode" type="text" [(ngModel)]="todo.text">
+  
 </div>

@@ -15,8 +15,8 @@ export class TodoService {
     }
 
     public init(){
-        this.http.get('src/assets/todos.json').subscribe(data => {
-            let todoArray = (<any>data)._embedded.todos;
+        this.http.get('http://localhost:3000/todo/todos').subscribe(data => {
+            let todoArray = (<any>data);
             for(let jsonTodo of todoArray){
                 this.todos.push(new Todo(this.nextId++, jsonTodo.description, jsonTodo.title));
             }

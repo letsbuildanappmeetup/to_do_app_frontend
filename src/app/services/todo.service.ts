@@ -1,22 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../classes/todo';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class TodoService {
 
-  private todos: Todo[];
-  private nextId: number;
-  private todosToDelete: number[];
+    private todos: Todo[] = [];
+    private nextId: number;
+    private todosToDelete: number[];
 
-  constructor() {
-    this.todos = [
-      new Todo(0, "Practice more on ES6!"),
-      new Todo(1, "Learn to make an Angular app!"),
-      new Todo(2, "Learn to make a React app!")
-    ];
-    this.todosToDelete = [];
-    this.nextId = 3;
-  }
+    constructor(private http: HttpClient) {
+        this.todosToDelete = [];
+        this.nextId = 0;
+    }
+
+    public init(){
+        this.http.get('src/assets/todos.json').subscribe(data => {
+            let todoArray = (<any>data)._embedded.todos;
+            for(let jsonTodo of todoArray){
+                this.todos.push(new Todo(this.nextId++, jsonTodo.description, jsonTodo.title));
+            }
+        });
+    }
 
   public addTodo(text: string): void {
     let todo = new Todo(this.nextId, text);

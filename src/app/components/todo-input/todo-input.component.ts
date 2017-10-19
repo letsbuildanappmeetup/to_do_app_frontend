@@ -15,7 +15,11 @@ export class TodoInputComponent {
   }
 
   private addTodo(): void {
-    this.todoService.addTodo(this.todoText);
-    this.todoText = '';
+    // trims the value from input of spaces and checks if input is empty before saving todo 
+    if( this.todoText.trim() != '' ){
+      this.todoService.addTodo(this.todoText);
+      this.todoText = '';
+    }
+  
   }
 }

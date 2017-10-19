@@ -1,9 +1,14 @@
 <div class="main">
+   
   <div class="todo-wrapper">
+      <h1>ToDo List</h1>
+    <app-todo-input></app-todo-input>
     <app-todo-header></app-todo-header>
-    <div *ngFor="let todo of todoService.getTodos()">
+    <div class="todos-box">
+    <div  *ngFor="let todo of todoService.getTodos()">
       <app-todo-item [todo]="todo"></app-todo-item>
     </div>
-    <app-todo-input></app-todo-input>
+  </div>
+    
   </div>
 </div>

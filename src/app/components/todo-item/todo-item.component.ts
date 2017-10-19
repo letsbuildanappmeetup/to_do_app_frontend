@@ -13,7 +13,9 @@ export class TodoItemComponent {
   private todo: Todo;
   private editMode : boolean = false;
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService) { 
+     
+  }
 
   private removeTodo(): void {
     this.todoService.removeTodo(this.todo.id);

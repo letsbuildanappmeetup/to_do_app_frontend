@@ -7,12 +7,19 @@ export class TodoService {
   private todos: Todo[];
   private nextId: number;
   private todosToDelete: number[];
+  public editMode : boolean = false;
 
   constructor() {
     this.todos = [
       new Todo(0, "Practice more on ES6!"),
       new Todo(1, "Learn to make an Angular app!"),
-      new Todo(2, "Learn to make a React app!")
+      new Todo(2, "Learn to make a React app!"),
+      new Todo(3, "Learn to make an Angular app!"),
+      new Todo(4, "Learn to make an Angular app!"),
+      new Todo(5, "Learn to make an Angular app!"),
+      new Todo(6, "Learn to make an Angular app!"),
+      new Todo(7, "Learn to make an Angular app!"),
+      new Todo(8, "Learn to make an Angular app!"),
     ];
     this.todosToDelete = [];
     this.nextId = 3;
@@ -27,7 +34,7 @@ export class TodoService {
   public getTodos(): Todo[] {
     return this.todos;
   }
-
+  
   public removeTodo(id: number): void {
     this.todos = this.todos.filter((todo) => todo.id != id);
 

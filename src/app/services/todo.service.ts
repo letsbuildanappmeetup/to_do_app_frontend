@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../classes/todo';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class TodoService {
@@ -7,7 +8,7 @@ export class TodoService {
   private todos: Todo[];
   private nextId: number;
   private todosToDelete: number[];
-  public editMode : boolean = false;
+  public editMode = new Subject();
 
   constructor() {
     this.todos = [
@@ -23,6 +24,10 @@ export class TodoService {
     ];
     this.todosToDelete = [];
     this.nextId = 3;
+    setInterval(function(){
+         //this.editMode = true;
+         console.log('edit mode changed in service');
+    },3000)
   }
 
   public addTodo(text: string): void {

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component ,OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
@@ -6,10 +6,20 @@ import { TodoService } from '../../services/todo.service';
   templateUrl: './todo-header.component.html',
   styleUrls: ['./todo-header.component.css']
 })
-export class TodoHeaderComponent {
+export class TodoHeaderComponent implements OnInit{
 
-  constructor(private todoService: TodoService) { }
+  private editMode : boolean = false;
 
+  constructor(private todoService: TodoService) { 
+
+  }
+  ngOnInit(){
+    this.todoService.editMode.subscribe((mode) => {
+      
+              mode ? this.editMode = true : this.editMode = false;
+      
+           });
+  }
   private removeAll() : void{
      this.todoService.removeAll();
   }

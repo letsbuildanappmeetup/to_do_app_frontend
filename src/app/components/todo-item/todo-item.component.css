@@ -12,6 +12,7 @@
 
 .left-pane{
   margin-top: auto;
+  margin-bottom: auto;
   flex : 1;
 }
 .center-pane{

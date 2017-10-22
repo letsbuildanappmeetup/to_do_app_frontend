@@ -1,2 +1,2 @@
-<div><button class="btn btn-danger" (click)="removeAll()">remove all</button></div>
-<!-- [ngClass]="editMode : btn btn-danger , !editMode : btn btn-disabled" -->
+<div><button class="btn" [ngClass]="{'btn-danger' : !editMode , 'btn-disabled' : editMode }" 
+              (click)="removeAll()">remove selected</button></div>
